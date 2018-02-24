@@ -23,9 +23,11 @@
 			<img style="width: 60%" src="https://orig00.deviantart.net/157a/f/2017/232/d/9/_3d__cells_are_multiplying_by_cbunnyhop-dbkq92t.gif">
 		</div>
 		<div class="row">
-			<select name="colour" method="GET" action="/">
-    				{% for colour in colours %}
-        				<option value="{{colour}}" SELECTED>{{colour}}</option>
+			<br>
+			<br>
+			<select name="namesData" method="GET" action="/">
+    				{% for namesData in namesData %}
+        				<option value="{{namesData}}" SELECTED>{{namesData}}</option>
     				{% endfor %}
 			</select>
 			<script type="text/javascript">

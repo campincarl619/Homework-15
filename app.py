@@ -18,6 +18,7 @@ namesDF = namesDF.drop(namesDF.index[lastRow - 1])
 namesDF = namesDF.reset_index()
 namesDF = namesDF.rename(columns={"index":"Data"})
 namesDF["Data"] = "BB_" + namesDF["Data"].astype(str)
+namesData = namesDF["Data"].tolist()
 
 metaDF = pd.read_csv(metaCSV)
 metaDF["SAMPLEID"] = "BB_" + metaDF["SAMPLEID"].astype(str)
@@ -26,13 +27,12 @@ metaDF.head()
 #----------------------------------------------------------------------------------------------------
 @app.route("/", methods=['GET'])
 def index():
-    namesData = namesDF["Data"].tolist()
-    return render_template("index.html", namesData)
+    
+    return render_template("index.html", namesData = namesData)
 
 #----------------------------------------------------------------------------------------------------
 @app.route("/names")
 def names():
-    namesData = namesDF["Data"].tolist()
 
     return jsonify(namesData)
 
