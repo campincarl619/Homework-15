@@ -20,9 +20,14 @@
 	<div class="container" style="background-color: white">
 		<div class = "row" style="text-align: center">
 			<h1>Cell Data!!</h1>
-			<!--<img style="width: 60%" src="https://orig00.deviantart.net/157a/f/2017/232/d/9/_3d__cells_are_multiplying_by_cbunnyhop-dbkq92t.gif">-->
+			<img style="width: 60%" src="https://orig00.deviantart.net/157a/f/2017/232/d/9/_3d__cells_are_multiplying_by_cbunnyhop-dbkq92t.gif">
 		</div>
 		<div class="row">
+			<select name="colour" method="GET" action="/">
+    				{% for colour in colours %}
+        				<option value="{{colour}}" SELECTED>{{colour}}</option>
+    				{% endfor %}
+			</select>
 			<script type="text/javascript">
 				
 			</script>

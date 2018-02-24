@@ -1,6 +1,6 @@
 import pandas as pd
 
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 
 app = Flask(__name__)
 
@@ -24,10 +24,10 @@ metaDF["SAMPLEID"] = "BB_" + metaDF["SAMPLEID"].astype(str)
 metaDF.head()
 
 #----------------------------------------------------------------------------------------------------
-@app.route("/")
+@app.route("/", methods=['GET'])
 def index():
- 
-    return render_template("index.html")
+    namesData = namesDF["Data"].tolist()
+    return render_template("index.html", namesData)
 
 #----------------------------------------------------------------------------------------------------
 @app.route("/names")
