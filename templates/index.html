@@ -18,20 +18,75 @@
 
 <div class="container-fluid">
 	<div class="container" style="background-color: white">
-		<div class = "row" style="text-align: center">
-			<h1>Cell Data!!</h1>
-			<img style="width: 60%" src="https://orig00.deviantart.net/157a/f/2017/232/d/9/_3d__cells_are_multiplying_by_cbunnyhop-dbkq92t.gif">
+		<div class = "row" style="text-align: center" >
+			<div class="col-md-3">			
+			</div>
+			<div class="col-md-6" style="background-color: lightgrey">
+				<h1>Cell Data!!</h1>
+				<img style="width: 100%" src="https://orig00.deviantart.net/157a/f/2017/232/d/9/_3d__cells_are_multiplying_by_cbunnyhop-dbkq92t.gif">
+			</div>
+			<div class="col-md-3">			
+			</div>
 		</div>
 		<div class="row">
 			<br>
 			<br>
-			<select name="namesData" method="GET" action="/">
+			<div class="col-md-1">				
+			</div>
+			<div class="col-md-2" style="background-color: lightgrey" style="align-items: center">
+			<strong>SELECT Sample:</strong>
+			<select name="namesData" method="GET"  onchange="getData(this.value)">
     				{% for namesData in namesData %}
         				<option value="{{namesData}}" SELECTED>{{namesData}}</option>
     				{% endfor %}
 			</select>
+			<br><br><br><br><br>
+			</div>
+			<div class="col-md-9" id="pie">
+			</div>
 			<script type="text/javascript">
-				
+				function init() {
+				  var data = [{
+				    values: [19, 26, 55, 88],
+				    labels: ["Spotify", "Soundcloud", "Pandora", "Itunes"],
+				    type: "pie"
+				  }];
+
+				  var layout = {
+				    height: 600,
+				    width: 800
+				  };
+
+				  Plotly.plot("pie", data, layout);
+				}
+
+
+				function updatePlotly(newdata) {
+					var PIE = document.getElementById("pie");
+  					Plotly.restyle(PIE, "values", [newdata]);
+				}
+
+				function getData(dataset) {
+  					var data = [];
+
+  					switch (dataset) {
+    				case "dataset1":
+      					data = [1, 2, 3, 39];
+      					break;
+				    case "dataset2":
+      					data = [10, 20, 30, 37];
+      					break;
+    				case "dataset3":
+      					data = [100, 200, 300, 23];
+    				  break;
+    				default:
+	      				data = [30, 30, 30, 11];
+  					}
+  					updatePlotly(data);
+				}
+
+				init();
+
 			</script>
 		</div>
 	</div>

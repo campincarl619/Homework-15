@@ -53,18 +53,9 @@ def sampleData(sample):
 
     bbSample = metaDF.loc[metaDF["SAMPLEID"] == sample]
     bbSample = bbSample[['AGE','BBTYPE','ETHNICITY','GENDER','LOCATION','SAMPLEID']]
-    #bbSample = bbSample.to_json(orient = 'records')
+    bbSample = bbSample.to_json(orient = 'records')
 
-    bbAge = bbSample['AGE'].tolist()
-    bbType = bbSample['BBTYPE'].tolist()
-    bbEth = bbSample['ETHNICITY'].tolist()
-    bbGen = bbSample['GENDER'].tolist()
-    bbLoc = bbSample['LOCATION'].tolist()
-    bbSam = bbSample['SAMPLEID'].tolist()
-
-    return jsonify([dict(AGE=bbAge,BBTYPE=bbType,ETHNICITY=bbEth,GENDER=bbGen,LOCATION=bbLoc,SAMPLEID=bbSam)])
-
-    #return bbSample
+    return bbSample
 
 #----------------------------------------------------------------------------------------------------
 @app.route("/wfreq/<sample>")
